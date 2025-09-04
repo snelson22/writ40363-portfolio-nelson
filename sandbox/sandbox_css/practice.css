@@ -1,0 +1,35 @@
+
+* {
+    border: 1px solid red;
+    }
+
+header {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    height: 60vh;
+    background-color:bisque;
+    }
+
+.header_text {
+    background-color: cadetblue;
+    height: 45vh;
+    width: 45%;
+    }
+
+.header_pic {
+    background-color: cadetblue;
+    height: 45vh;
+    width: 45%;
+    }
+
+h1 {
+    color: #4d1979;
+    background-color: azure;
+    }
+
+h2 {
+    color: #4d1979;
+    background-color: rgb(123, 252, 252);
+    }
+
