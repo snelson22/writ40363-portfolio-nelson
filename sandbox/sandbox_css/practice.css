@@ -1,35 +1,95 @@
 
+/* command 4 slash for comment. the next lines override the browsers margin and padding defaults */
+
 * {
-    border: 1px solid red;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    }
+
+body {
+    /* Font stack expanation: 
+    - system-ui: Uses the OS default UI font (Segoe UI on Windows, San Fransico on mac)
+    - -apple-system: Fallback for older Safari browsers
+    - sans-serif: Universal fallback if system fonts fail. */
+
+    font-family: system-ui, -apple-system, sans-serif;
+
+    /* Line Height 1.6 = 160% of font size which improves readability */
+    line-height: 1.6;
+
+    /* #333 is dark gray, softer than pure black for better reading experience */
+    color: #333;
+    }
+
+nav {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e9ecef;
     }
 
 header {
-    display: flex;
+    /* display: flex; 
     flex-direction: row;
     gap: 2rem;
     height: 60vh;
-    background-color:bisque;
+    background-color:bisque;*/
+
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+    height: 60vh;
+    background-color: #f8f9fa;
+
     }
 
 .header_text {
     background-color: cadetblue;
-    height: 45vh;
-    width: 45%;
+    flex: 1;
+    padding: 2rem;
     }
 
 .header_pic {
-    background-color: cadetblue;
-    height: 45vh;
-    width: 45%;
+    flex: 1;
+    /* takes up equal space */
+    background-color: #e9ecef;
+    min-height: 300px;
+    border-radius: 10px;
+    /* subtle round corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    }
+
+main {
+    max-width: 65ch;  
+    margin: 0 auto;
+    padding: 5%;
+    }  
+
+    section {
+        margin-bottom: 2rem;
+    }
+/* consistent spacing between paragraphs */
+    p + p {
+        margin-top: 1rem;
     }
 
 h1 {
     color: #4d1979;
-    background-color: azure;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background-color: rgb(178, 207, 207);
     }
 
 h2 {
     color: #4d1979;
-    background-color: rgb(123, 252, 252);
+    background-color: rgb(170, 204, 221);
     }
+
+
+
 
