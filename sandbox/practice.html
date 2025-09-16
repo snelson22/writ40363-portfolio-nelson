@@ -10,7 +10,17 @@
 
 </head>
 <body>
-   <nav> blah blah blah </nav> 
+   <nav>
+    <div class="nav-container">
+        <a href="#" class="logo">Your Name</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+    </nav>
    
    <header>
         
@@ -20,36 +30,78 @@
             <p>Where words meet media </p>
         </div>
 
-        <div class="header_pic"></div>
-        <!-- <img src="images/MUFG.JPG" alt="Professional Headshot of Sophia Nelson " width="100%"> -->
+        <div class="header_pic">
+        
+            <img src="../Images/Headshot.jpg" alt="Professional Headshot of Sophia Nelson" /> 
+
+        </div>
 
    </header>
 
    <main>
 
-   <h1>This is H1 Content</h1>
+    <section class= "about-section" id="about">
+        <div class="about-image">
+            <img src="../images/tcu_library.jpg" alt="change soon">
+        </div>
+        <div class="about-text">
+            <h2>About Me</h2>
+            <p>compelling personal story</p>
+            <p>studying, interests, goals</p>
+        </div>
+    </section>
 
-   <section>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor, quia sint veritatis soluta unde facere fugit numquam mollitia nam aliquid dignissimos nesciunt voluptates minus eum ex fuga! Omnis, sit.
-        </p>
 
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor, quia sint veritatis soluta unde facere fugit numquam mollitia nam aliquid dignissimos nesciunt voluptates minus eum ex fuga! Omnis, sit.
-        </p>
+   <section class="skills-section" id="skills">
+    <h2> My Skills</h2>
+    <div class="skills-container">
+        <div class="skill-card">
+            <h3>Web Development</h3>
+            <p>HTML, CSS, Learning Javascript</p>
+         </div>
+         <div class="skill-card">
+            <h3>Writing</h3>
+            <p>creative, professional, techinical</p>
+         </div>
+         <div class="skill-card">
+            <h3>Skill</h3>
+            <p>blah, blah, blah</p>
+         </div>
+         <div class="skill-card">
+            <h3>Communication</h3>
+            <p>presentation, teamwork, blah</p>
+         </div>
+    </div>
    </section>
-
-    <h2>This is H2 Content</h2>
-
-   <section>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor, quia sint veritatis soluta unde facere fugit numquam mollitia nam aliquid dignissimos nesciunt voluptates minus eum ex fuga! Omnis, sit.
-        </p>
         
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dolor, quia sint veritatis soluta unde facere fugit numquam mollitia nam aliquid dignissimos nesciunt voluptates minus eum ex fuga! Omnis, sit.
-        </p>
-   </section>
+<section class="projects-section" id="projects">
+    <h2>My Projects</h2>
+    <div class="projects-container">
+        <article class="project-card">
+            <div class="project-content">
+                <h3>Class Website Project</h3>
+                <p>A simple website I built using HTML and CSS for this class.</p>
+                <p><strong>Skills used:</strong> HTML, CSS, Flexbox</p>
+            </div>
+        </article>
+        
+        <article class="project-card">
+            <div class="project-content">
+                <h3>Portfolio Planning</h3>
+                <p>Research and planning for my personal portfolio website.</p>
+                <p><strong>Skills used:</strong> Research, planning, design thinking</p>
+            </div>
+        </article>
+        
+        <article class="project-card">
+            <div class="project-content">
+                <h3>Future Project</h3>
+                <p>A placeholder for a project I plan to build this semester.</p>
+                <p><strong>Skills to learn:</strong> JavaScript, responsive design</p>
+            </div>
+        </article>
+    </div>
+</section>
 
 
 </main>
