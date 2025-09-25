@@ -1,3 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=GFS+Didot&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
+
+:root {
+ --primary-color: #1e40af;
+ --heading-color: #4d1979;
+ --text-color: #1f2937;
+ --light-text: #6b7280;
+ --background: #833b3b;
+ --light-background: #f9fafb;
+ --card-background: #f8f9fa;
+ --card-border: #e9ecef;
+ --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ --card-shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.15);
+ --accent-color: #28a745;
+ --link-hover: #007bff;
+}
+
+
+
 
 /* ========================= */
 /* 1. Reset & Base Styles    */
@@ -9,10 +28,14 @@
   padding: 0;
 }
 body {
-  /* Font stack explanation: system-ui, -apple-system, sans-serif */
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: "Red Hat Text", sans-serif;
   line-height: 1.6;
   color: #333;
+}
+
+h1,h2,h3, p{
+  font-family: 'GFS Didot', serif;
+  line-height: 1.2;
 }
 
 /* ========================= */
