@@ -4,20 +4,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 :root {
-  --primary-color: #3E4A56;
-  --heading-color: #2D323E;
-  --text-color: #222222;
-  --light-text: #7A7A7A;
-  --background: #F8F9FB; 
-  --light-background: #EAF0F2; 
-  --card-background: #F8F9FB; 
+  --primary-color: #2F243A; /* Deep plum for primary text */
+  --heading-color: #A07A4A; /* Warm gold for headings */
+  --text-color: #2F243A; /* Deep plum for body text */
+  --light-text: #8E8E8E; /* Medium gray for subtle text */
+  --background: #F5F2F7; /* Soft, light taupe for main background */
+  --light-background: #EFEAEF; /* Slightly darker shade for sections */
+  --card-background: #F5F2F7; /* Same as background for cohesion */
   --card-border: #7C6999;
   --card-shadow: 0 2px 4px rgba(62, 74, 86, 0.1);
   --card-shadow-hover: 0 4px 8px rgba(62, 74, 86, 0.15);
-  --accent-color: #7C6999; 
-  --link-hover: #E8A95A; 
-  --secondary-accent: #4B675A; 
-  --tcu-purple: #4D1979;
+  --accent-color: #5A457D; /* Professional purple accent from the flowers */
+  --link-hover: #E4C385; /* Brighter gold for a vibrant hover effect */
+  --secondary-accent: #4B675A; /* Muted evergreen for contrast */
 }
 html {
   scroll-behavior: smooth;
@@ -189,7 +188,7 @@ header {
   box-shadow: var(--card-shadow-hover);
 }
 header h1 {
-  color: var(--accent-color); /* The main heading now uses the accent color */
+  color: var(--accent-color); 
 }
 
 /* ========================= */
@@ -232,7 +231,12 @@ header h1 {
 /* ========================= */
 .skills-section {
   background-color: var(--light-background);
+  padding: 2.5rem 1rem;
+  gap: 1rem;
+  min-height: 30vh; 
+  text-align: center;
 }
+
 .skills-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -241,10 +245,10 @@ header h1 {
 }
 .skill-card {
   padding: 1.5rem;
-  background: var(--card-background); /* Clean white for card backgrounds */
+  background: var(--card-background); 
   border-radius: 8px;
   text-align: center;
-  border: 1px solid rgba(0, 0, 0, 0.05); /* Lighter border */
+  border: 1px solid rgba(0, 0, 0, 0.05); 
   box-shadow: var(--card-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
