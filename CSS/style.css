@@ -210,12 +210,13 @@ header h1 {
 }
 .about-image {
   justify-self: center;
+  flex: 0 0 60%;
 }
 .about-image img {
   width: 100%;
-  max-width: 250px;
-  height: auto;
-  border-radius: 8px;
+  max-width: 400px;
+  height: auto;object-fit: cover;
+  border-radius: 10px;
   box-shadow: var(--card-shadow);
 }
 .about-text {
