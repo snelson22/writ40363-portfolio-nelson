@@ -214,8 +214,9 @@ header h1 {
 }
 .about-image img {
   width: 100%;
-  max-width: 400px;
-  height: auto;object-fit: cover;
+  max-width: 900px;
+  height: auto;
+  object-fit: cover;
   border-radius: 10px;
   box-shadow: var(--card-shadow);
 }
