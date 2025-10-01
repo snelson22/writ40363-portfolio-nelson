@@ -287,6 +287,15 @@ header h1 {
     grid-template-columns: 1fr 1fr;
   }
 }
+.project-content img {
+  width: 100%;
+  max-width: 250px;   /* Adjust as needed */
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem auto;
+  border-radius: 10px;
+  box-shadow: var(--card-shadow);
+}
 .project-card {
   padding: 2rem;
   background: var(--card-background);
