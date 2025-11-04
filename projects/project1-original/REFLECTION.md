@@ -1,0 +1,7 @@
+Last year, I took Intro to Python for Data Analytics which has aided me so much with HTML. The formatting and organization part of the code makes sense in my mind because I am previously familiar with how the computer likes to read code. The most challenging part is honestly that it likes to auto-fill with the code and so it's easy for me to get confused. 
+Honestly, GitHub confuses me. I don't understand its full purpose and feel like there might be a different application I would find easier to use.
+In class today, I got lost with Git because it wanted to access so many applications on my computer that I had to manually go into settings and allow. That caused me to fall behind and have to restart from scratch.
+I'm excited to fully develop and create a website. I think it is so cool that even what is coded so far looks like a legitamit website.
+One of my breakthroughs was understanding what the "embed" sharing link is for videos on youtube. I didn;t realize it was for website and coding to actually input it into a new system.
+While I am excited to start actually graphically designing the website, it makes me nervous because in a previous graphic design class it was tedious. 
+The most helpful has been walking through the steps one at a time. While, it can take some time to ensure everyone is on the same page, I feel like I am actually learning and processing correctly how to create the code. 
