@@ -1,4 +1,29 @@
-// ==========================================
+function createStars() {
+    const container = document.querySelector('.star-container');
+    const starCount = 100; // Increase or decrease for more/fewer stars
+
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        
+        // Random position
+        star.style.left = `${Math.random() * 100}%`;
+        
+        // Random fall duration between 3 and 6 seconds
+        const fallDuration = 3 + Math.random() * 3;
+        star.style.setProperty('--fall-duration', `${fallDuration}s`);
+        
+        // Random delay
+        star.style.animationDelay = `${Math.random() * 5}s`;
+        
+        container.appendChild(star);
+    }
+}
+
+// Create stars when the page loads
+document.addEventListener('DOMContentLoaded', createStars);
+
+//==========================================
 // PROJECT 2: LOCAL FAVORITES TRACKER
 // LAB14: Delete, Search, and Filter
 // ==========================================
