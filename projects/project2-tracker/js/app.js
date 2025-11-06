@@ -263,6 +263,22 @@ function addFavorite(event) {
     console.log('Favorite added successfully!');
 }
 
+// Sorting Functions
+function sortByName() {
+    favorites.sort((a, b) => a.name.localeCompare(b.name));
+    displayFavorites();
+}
+
+function sortByRating() {
+    favorites.sort((a, b) => b.rating - a.rating);
+    displayFavorites();
+}
+
+function sortByDate() {
+    favorites.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+    displayFavorites();
+}
+
 // Connect event listeners
 form.addEventListener('submit', addFavorite);
 searchInput.addEventListener('input', searchFavorites);
