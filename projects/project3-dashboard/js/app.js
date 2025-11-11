@@ -72,3 +72,82 @@ function displayWeatherError() {
 
 // Load weather data when page loads
 loadWeather();
+
+// Global variable to store all quotes
+let allQuotes = [];
+let currentQuoteIndex = -1; // Track current quote to avoid repeats
+
+// Function to load quotes from JSON
+function loadQuotes() {
+  console.log('Loading quotes...');
+
+  fetch('./data/quotes.json')
+    .then(response => {
+      console.log('Got quotes response:', response);
+      return response.json();
+    })
+    .then(data => {
+      console.log('Quotes data:', data);
+      allQuotes = data; // Store quotes in global variable
+      displayRandomQuote(); // Show first quote
+    })
+    .catch(error => {
+      console.error('Error loading quotes:', error);
+      displayQuotesError();
+    });
+}
+
+// Function to display a random quote
+function displayRandomQuote() {
+  // Make sure we have quotes loaded
+  if (allQuotes.length === 0) {
+    console.error('No quotes available');
+    return;
+  }
+
+  // Get random index (different from current)
+  let randomIndex;
+  do {
+    randomIndex = Math.floor(Math.random() * allQuotes.length);
+  } while (randomIndex === currentQuoteIndex && allQuotes.length > 1);
+
+  currentQuoteIndex = randomIndex;
+  const quote = allQuotes[randomIndex];
+
+  // Display the quote
+  const quotesDisplay = document.getElementById('quotes-display');
+  quotesDisplay.innerHTML = `
+    <div class="quote-card">
+      <div class="quote-text">"${quote.text}"</div>
+      <div class="quote-author">— ${quote.author}</div>
+    </div>
+  `;
+
+  console.log('Displayed quote:', quote);
+}
+
+// Function to show error message
+function displayQuotesError() {
+  const quotesDisplay = document.getElementById('quotes-display');
+  quotesDisplay.innerHTML = `
+    <div class="error-message">
+      ⚠️ Could not load quotes
+    </div>
+  `;
+}
+
+// Call loadQuotes when page loads
+loadQuotes();
+
+// Set up "New Quote" button
+function setupQuotesButton() {
+  const newQuoteBtn = document.getElementById('new-quote-btn');
+
+  newQuoteBtn.addEventListener('click', () => {
+    console.log('New quote button clicked!');
+    displayRandomQuote();
+  });
+}
+
+// Call setupQuotesButton after DOM is loaded
+setupQuotesButton();

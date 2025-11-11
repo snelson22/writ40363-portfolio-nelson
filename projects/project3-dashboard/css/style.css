@@ -118,3 +118,71 @@ header h1 {
     color: #a0aec0;
     font-size: 14px !important;
 }
+
+.quotes-widget {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quote-card {
+  text-align: center;
+  padding: 30px 20px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.quote-text {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #2d3748;
+  font-style: italic;
+  margin-bottom: 15px;
+  max-width: 600px;
+}
+
+.quote-author {
+  font-size: 16px;
+  color: #718096;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background: #4299e1;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.btn-primary:hover {
+  background: #3182ce;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+.quote-card {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
