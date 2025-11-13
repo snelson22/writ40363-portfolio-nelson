@@ -312,3 +312,50 @@ function updateTaskStats(tasks) {
 // Initialize tasks when page loads
 displayTasks();
 setupTaskForm();
+
+// Theme Management
+function initializeTheme() {
+  // Check for saved theme preference
+  const savedTheme = localStorage.getItem('dashboardTheme');
+
+  if (savedTheme === 'dark') {
+    document.body.classList.add('theme-dark');
+    updateThemeIcon('dark');
+  } else {
+    updateThemeIcon('light');
+  }
+}
+
+function toggleTheme() {
+  const isDark = document.body.classList.toggle('theme-dark');
+
+  // Save preference
+  localStorage.setItem('dashboardTheme', isDark ? 'dark' : 'light');
+
+  // Update icon
+  updateThemeIcon(isDark ? 'dark' : 'light');
+
+  console.log('Theme switched to:', isDark ? 'dark' : 'light');
+}
+
+function updateThemeIcon(theme) {
+  const themeIcon = document.querySelector('.theme-icon');
+
+  if (theme === 'dark') {
+    themeIcon.textContent = '☀️'; // Sun for dark mode (to switch to light)
+  } else {
+    themeIcon.textContent = '🌙'; // Moon for light mode (to switch to dark)
+  }
+}
+
+function setupThemeToggle() {
+  const themeToggleBtn = document.getElementById('theme-toggle');
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', toggleTheme);
+  }
+}
+
+// Call these when page loads
+initializeTheme();
+setupThemeToggle();

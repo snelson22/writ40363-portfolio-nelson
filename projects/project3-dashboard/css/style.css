@@ -40,7 +40,34 @@
   --font-size-2xl: 24px;
   --font-size-3xl: 32px;
 }
+/* Dark Theme - Override Variables */
+body.theme-dark {
+  /* Backgrounds */
+  --color-bg-light: #1a202c;
+  --color-bg-white: #2d3748;
 
+  /* Text Colors */
+  --color-text-dark: #f7fafc;
+  --color-text-muted: #cbd5e0;
+
+  /* UI Elements */
+  --color-border: #4a5568;
+
+  /* Accent Colors (lighter in dark mode) */
+  --color-accent: #63b3ed;
+
+  /* Shadows (darker in dark mode) */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.5);
+
+  /* Error Colors (adjusted for dark mode) */
+  --color-error-bg: #742a2a;
+
+  /* Header Gradient (different colors for dark mode) */
+  --color-primary: #4a5568;
+  --color-secondary: #2d3748;
+}
 /* ===================================
    GLOBAL STYLES
    =================================== */
@@ -359,3 +386,40 @@ header h1 {
     transform: translateY(0);
   }
 }
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(20deg);
+}
+
+.theme-icon {
+  font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
