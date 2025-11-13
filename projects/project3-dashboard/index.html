@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Personal Dashboard</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="dashboard">
@@ -26,6 +26,30 @@
              <!-- Quote will appear here -->
             </div>
               <button id="new-quote-btn" class="btn-primary">New Quote</button>
+            </div>
+            <div class="widget tasks-widget">
+            <h2>My Tasks</h2>
+
+            <!-- Add Task Form -->
+            <form id="task-form" class="task-form">
+             <input
+                  type="text"
+                    id="task-input"
+                    placeholder="Add a new task..."
+                    required
+                        />
+             <button type="submit" class="btn-primary">Add Task</button>
+             </form>
+
+              <!-- Task Statistics -->
+              <div id="task-stats" class="task-stats">
+             <!-- Stats will appear here -->
+            </div>
+
+            <!-- Tasks List -->
+            <div id="tasks-list" class="tasks-list">
+             <!-- Tasks will appear here -->
+            </div>
             </div>
         </main>
     </div>
