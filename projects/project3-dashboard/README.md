@@ -76,6 +76,9 @@ project3-dashboard/
 - Task categories and priorities
 - Export/import tasks feature
 - Additional widgets
+- Transition Smoothing
+- Note Taking Widget
+- Custom CSS design to patch Project 1
 
 ## Author
 
