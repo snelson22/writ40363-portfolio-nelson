@@ -1,9 +1,20 @@
 {
-  "location": "Fort Worth, TX",
-  "temperature": 72,
-  "condition": "Partly Cloudy",
-  "icon": "⛅",
-  "humidity": 65,
-  "windSpeed": 8,
-  "feelsLike": 74
+  "current": {
+    "icon": "⛅",
+    "temperature": 72,
+    "location": "Fort Worth, TX",
+    "condition": "Partly Cloudy",
+    "humidity": 65,
+    "windSpeed": 12,
+    "feelsLike": 70
+  },
+  "forecast": [
+    {
+      "day": "Tomorrow",
+      "high": 75,
+      "low": 58,
+      "condition": "Sunny",
+      "icon": "☀️"
+    }
+  ]
 }

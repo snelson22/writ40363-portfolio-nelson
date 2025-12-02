@@ -1,27 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
 /* ===================================
    CSS CUSTOM PROPERTIES (VARIABLES)
    =================================== */
 
 :root {
-  /* Color Palette */
-  --color-primary: #667eea;
-  --color-secondary: #764ba2;
-  --color-accent: #4299e1;
-
-  /* Backgrounds */
-  --color-bg-light: #f7fafc;
-  --color-bg-white: #ffffff;
-
-  /* Text Colors */
-  --color-text-dark: #2d3748;
-  --color-text-muted: #718096;
-
-  /* UI Elements */
-  --color-border: #e2e8f0;
-  --color-error: #e53e3e;
-  --color-error-bg: #fff5f5;
-  --color-error-border: #fc8181;
-
+  /* Day Mode Colors */
+  --primary-color: #2F243A; /* Deep plum for primary text */
+  --heading-color: #A07A4A; /* Warm gold for headings */
+  --text-color: #2F243A; /* Deep plum for body text */
+  --light-text: #8E8E8E; /* Medium gray for subtle text */
+  --background: #F5F2F7; /* Soft, light taupe for main background */
+  --light-background: #EFEAEF; /* Slightly darker shade for sections */
+  --card-background: #F5F2F7; /* Same as background for cohesion */
+  --card-border: #7C6999;
+  --card-shadow: 0 2px 4px rgba(62, 74, 86, 0.1);
+  --card-shadow-hover: 0 4px 8px rgba(62, 74, 86, 0.15);
+  --accent-color: #5A457D; /* Professional purple accent */
+  --link-hover: #E4C385; /* Brighter gold for hover effect */
+  --secondary-accent: #4B675A; /* Muted evergreen for contrast */
+  
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -36,38 +34,30 @@
   --font-size-sm: 14px;
   --font-size-base: 16px;
   --font-size-lg: 18px;
-  --font-size-xl: 20px;
-  --font-size-2xl: 24px;
-  --font-size-3xl: 32px;
 }
+
 /* Dark Theme - Override Variables */
 body.theme-dark {
-  /* Backgrounds */
-  --color-bg-light: #1a202c;
-  --color-bg-white: #2d3748;
-
-  /* Text Colors */
-  --color-text-dark: #f7fafc;
-  --color-text-muted: #cbd5e0;
-
-  /* UI Elements */
-  --color-border: #4a5568;
-
-  /* Accent Colors (lighter in dark mode) */
-  --color-accent: #63b3ed;
-
-  /* Shadows (darker in dark mode) */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.5);
-
+  /* Night Mode Colors - Adjusted for readability */
+  --primary-color: #E8DFF5; /* Light plum for primary text */
+  --heading-color: #F0D9A8; /* Lighter gold for headings */
+  --text-color: #E8DFF5; /* Light plum for body text */
+  --light-text: #B0B0B0; /* Lighter gray for subtle text */
+  --background: #1A1428; /* Deep dark background */
+  --light-background: #2D2540; /* Slightly lighter shade for sections */
+  --card-background: #251F38; /* Dark card background */
+  --card-border: #6B5B87; /* Adjusted border for dark mode */
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --accent-color: #9B8BB5; /* Lighter purple accent */
+  --link-hover: #F0D9A8; /* Brighter gold for hover */
+  --secondary-accent: #7BA88A; /* Adjusted evergreen */
+  
   /* Error Colors (adjusted for dark mode) */
   --color-error-bg: #742a2a;
-
-  /* Header Gradient (different colors for dark mode) */
-  --color-primary: #4a5568;
-  --color-secondary: #2d3748;
+  --color-error-border: #a85555;
 }
+
 /* ===================================
    GLOBAL STYLES
    =================================== */
@@ -81,14 +71,14 @@ body.theme-dark {
 body {
   margin: 0;
   padding: var(--space-lg);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--color-bg-light);
-  color: var(--color-text-dark);
+  font-family: "Inter", sans-serif;
+  background: var(--background);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @media (max-width: 768px) {
-  .dashboard {
-    grid-template-columns: 1fr;
+  body {
     padding: var(--space-md);
   }
 }
@@ -99,7 +89,8 @@ header {
 }
 
 header h1 {
-  color: var(--color-text-dark);
+  font-family: "Playfair Display", serif;
+  color: var(--accent-color);
 }
 
 /* ===================================
@@ -113,15 +104,17 @@ header h1 {
 }
 
 .widget {
-  background: var(--color-bg-white);
+  background: var(--card-background);
   padding: var(--space-md);
   border-radius: 8px;
   box-shadow: var(--shadow-sm);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .widget h2 {
   margin-bottom: 15px;
-  color: var(--color-text-dark);
+  color: var(--heading-color);
+  font-family: "Playfair Display", serif;
   font-size: 1.2em;
 }
 
@@ -137,25 +130,24 @@ header h1 {
 .weather-icon {
   font-size: 64px;
   margin-bottom: 10px;
-  color: var(--color-primary);
 }
 
 .weather-temp {
   font-size: 48px;
   font-weight: bold;
-  color: var(--color-text-dark);
+  color: var(--text-color);
   margin: 10px 0;
 }
 
 .weather-location {
   font-size: 18px;
-  color: var(--color-text-muted);
+  color: var(--light-text);
   margin: 5px 0;
 }
 
 .weather-condition {
   font-size: 16px;
-  color: var(--color-text-dark);
+  color: var(--text-color);
   font-weight: 500;
 }
 
@@ -163,7 +155,7 @@ header h1 {
   display: flex;
   justify-content: space-around;
   padding-top: 15px;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--card-border);
   margin-top: 15px;
 }
 
@@ -174,13 +166,13 @@ header h1 {
 .weather-detail span {
   display: block;
   font-size: 14px;
-  color: var(--color-text-muted);
+  color: var(--light-text);
   margin-bottom: 5px;
 }
 
 .weather-detail strong {
   font-size: 18px;
-  color: var(--color-text-dark);
+  color: var(--text-color);
 }
 
 /* ===================================
@@ -195,17 +187,15 @@ header h1 {
 .error-icon {
   font-size: 48px;
   margin-bottom: 10px;
-  color: var(--color-error);
 }
 
 .error-message p {
-  color: var(--color-error);
   font-size: 16px;
   margin: 5px 0;
 }
 
 .error-hint {
-  color: var(--color-text-muted);
+  color: var(--light-text);
   font-size: 14px !important;
 }
 
@@ -214,7 +204,7 @@ header h1 {
    =================================== */
 
 .quotes-widget {
-  background: var(--color-bg-white);
+  background: var(--card-background);
   padding: 20px;
   border-radius: 8px;
   box-shadow: var(--shadow-sm);
@@ -228,13 +218,13 @@ header h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  animation: fadeIn 0.5s ease;
+  animation: fadeIn 0.5s ease-in;
 }
 
 .quote-text {
   font-size: 20px;
   line-height: 1.6;
-  color: var(--color-text-dark);
+  color: var(--text-color);
   font-style: italic;
   margin-bottom: 15px;
   max-width: 600px;
@@ -242,13 +232,13 @@ header h1 {
 
 .quote-author {
   font-size: 16px;
-  color: var(--color-text-muted);
+  color: var(--light-text);
   font-weight: 500;
 }
 
 .btn-primary {
-  background: var(--color-accent);
-  color: var(--color-bg-white);
+  background: var(--accent-color);
+  color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -261,7 +251,7 @@ header h1 {
 }
 
 .btn-primary:hover {
-  background: var(--color-primary);
+  background: var(--secondary-accent);
 }
 
 .btn-primary:active {
@@ -273,7 +263,7 @@ header h1 {
    =================================== */
 
 .tasks-widget {
-  background: var(--color-bg-white);
+  background: var(--card-background);
   padding: 20px;
   border-radius: 8px;
   box-shadow: var(--shadow-sm);
@@ -288,29 +278,32 @@ header h1 {
 .task-form input[type="text"] {
   flex: 1;
   padding: 10px;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--card-border);
   border-radius: 5px;
   font-size: 14px;
+  background-color: var(--background);
+  color: var(--text-color);
+  transition: border-color 0.3s ease;
 }
 
 .task-form input[type="text"]:focus {
   outline: none;
-  border-color: var(--color-accent);
+  border-color: var(--accent-color);
 }
 
 .task-stats {
   display: flex;
   justify-content: space-around;
   padding: 15px;
-  background: var(--color-bg-light);
+  background: var(--light-background);
   border-radius: 5px;
   margin-bottom: 15px;
   font-size: 13px;
-  color: var(--color-text-muted);
+  color: var(--light-text);
 }
 
 .task-stats .stat strong {
-  color: var(--color-text-dark);
+  color: var(--text-color);
 }
 
 .tasks-list {
@@ -323,14 +316,15 @@ header h1 {
   align-items: center;
   gap: 10px;
   padding: 12px;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--card-border);
   border-radius: 5px;
   margin-bottom: 8px;
+  background-color: var(--light-background);
   transition: background 0.2s ease;
 }
 
 .task-item:hover {
-  background: var(--color-bg-light);
+  background: var(--light-background);
 }
 
 .task-item input[type="checkbox"] {
@@ -342,18 +336,18 @@ header h1 {
 .task-item .task-text {
   flex: 1;
   font-size: 14px;
-  color: var(--color-text-dark);
+  color: var(--text-color);
 }
 
 .task-item.completed .task-text {
   text-decoration: line-through;
-  color: var(--color-text-muted);
+  color: var(--light-text);
 }
 
 .btn-delete {
   padding: 6px 12px;
-  background: var(--color-error-border);
-  color: var(--color-bg-white);
+  background: var(--accent-color);
+  color: white;
   border: none;
   border-radius: 4px;
   font-size: 12px;
@@ -362,14 +356,95 @@ header h1 {
 }
 
 .btn-delete:hover {
-  background: var(--color-error);
+  background: var(--secondary-accent);
 }
 
 .no-tasks {
   text-align: center;
   padding: 40px 20px;
-  color: var(--color-text-muted);
+  color: var(--light-text);
   font-size: 14px;
+}
+
+/* ===================================
+   NOTES WIDGET
+   =================================== */
+
+.notes-widget {
+  background: var(--card-background);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+#note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+#note-input {
+  padding: 1rem;
+  border: 2px solid var(--card-border);
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  resize: vertical;
+  background-color: var(--light-background);
+  color: var(--text-color);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+#note-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(90, 69, 125, 0.1);
+}
+
+body.theme-dark #note-input:focus {
+  box-shadow: 0 0 0 3px rgba(155, 139, 181, 0.1);
+}
+
+.note-item {
+  padding: 1rem;
+  background-color: var(--light-background);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.note-content {
+  color: var(--text-color);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.note-date {
+  font-size: 0.85rem;
+  color: var(--light-text);
+  margin-bottom: 0.75rem;
+}
+
+.note-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-delete {
+  background-color: var(--secondary-accent);
+  color: white;
+  padding: 0.35rem 0.75rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-delete:hover {
+  background-color: var(--accent-color);
 }
 
 /* ===================================
@@ -386,6 +461,20 @@ header h1 {
     transform: translateY(0);
   }
 }
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+#quotes-display {
+  transition: opacity 0.3s ease;
+}
+
 .header-content {
   display: flex;
   justify-content: space-between;
@@ -395,8 +484,8 @@ header h1 {
 }
 
 .theme-toggle {
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: var(--accent-color);
+  border: 2px solid var(--link-hover);
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -408,7 +497,7 @@ header h1 {
 }
 
 .theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--secondary-accent);
   transform: rotate(20deg);
 }
 

@@ -33,23 +33,23 @@ function displayWeather(weather) {
 
     weatherDisplay.innerHTML = `
         <div class="weather-current">
-            <div class="weather-icon">${weather.icon}</div>
-            <div class="weather-temp">${weather.temperature}°F</div>
-            <div class="weather-location">${weather.location}</div>
-            <div class="weather-condition">${weather.condition}</div>
+            <div class="weather-icon">${weather.current.icon}</div>
+            <div class="weather-temp">${weather.current.temperature}°F</div>
+            <div class="weather-location">${weather.current.location}</div>
+            <div class="weather-condition">${weather.current.condition}</div>
         </div>
         <div class="weather-details">
             <div class="weather-detail">
                 <span>💧 Humidity</span>
-                <strong>${weather.humidity}%</strong>
+                <strong>${weather.current.humidity}%</strong>
             </div>
             <div class="weather-detail">
                 <span>💨 Wind Speed</span>
-                <strong>${weather.windSpeed} mph</strong>
+                <strong>${weather.current.windSpeed} mph</strong>
             </div>
             <div class="weather-detail">
                 <span>🌡️ Feels Like</span>
-                 <strong>${weather.feelsLike}°F</strong>
+                 <strong>${weather.current.feelsLike}°F</strong>
             </div>
         </div>
     `;
@@ -124,6 +124,27 @@ function displayRandomQuote() {
   `;
 
   console.log('Displayed quote:', quote);
+}
+
+// Update your displayQuote function
+function displayQuote(quote) {
+    const quotesDisplay = document.getElementById('quotes-display');
+    
+    // Fade out
+    quotesDisplay.style.opacity = '0';
+    
+    // Wait for fade out, then update content
+    setTimeout(() => {
+        quotesDisplay.innerHTML = `
+            <div class="quote-card">
+                <p class="quote-text">"${quote.text}"</p>
+                <p class="quote-author">— ${quote.author}</p>
+            </div>
+        `;
+        
+        // Fade in
+        quotesDisplay.style.opacity = '1';
+    }, 300);
 }
 
 // Function to show error message
@@ -359,3 +380,119 @@ function setupThemeToggle() {
 // Call these when page loads
 initializeTheme();
 setupThemeToggle();
+// ========================================
+// NOTES WIDGET
+// ========================================
+
+// Simple markdown to HTML converter
+function parseMarkdown(text) {
+    let html = text
+        // Bold: **text** → <strong>text</strong>
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        // Italic: *text* → <em>text</em>
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        // Line breaks
+        .replace(/\n/g, '<br>');
+    
+    return html;
+}
+
+// Load notes from localStorage
+function loadNotes() {
+    const notesJSON = localStorage.getItem('dashboardNotes');
+    
+    if (notesJSON) {
+        return JSON.parse(notesJSON);
+    } else {
+        return [];
+    }
+}
+
+// Save notes to localStorage
+function saveNotes(notes) {
+    localStorage.setItem('dashboardNotes', JSON.stringify(notes));
+    console.log('Notes saved:', notes);
+}
+
+// Display all notes
+function displayNotes() {
+    const notes = loadNotes();
+    const notesList = document.getElementById('notes-list');
+    
+    if (notes.length === 0) {
+        notesList.innerHTML = '<p class="empty-message">No notes yet. Add one above! 📝</p>';
+        return;
+    }
+    
+    notesList.innerHTML = '';
+    
+    // Display notes in reverse order (newest first)
+    notes.reverse().forEach((note, index) => {
+        const noteItem = document.createElement('div');
+        noteItem.className = 'note-item';
+        
+        const noteDate = new Date(note.date).toLocaleString();
+        const noteContent = parseMarkdown(note.text);
+        
+        noteItem.innerHTML = `
+            <div class="note-date">${noteDate}</div>
+            <div class="note-content">${noteContent}</div>
+            <div class="note-actions">
+                <button class="btn-delete" onclick="deleteNote(${notes.length - 1 - index})">Delete</button>
+            </div>
+        `;
+        
+        notesList.appendChild(noteItem);
+    });
+}
+
+// Add a new note
+function addNote(noteText) {
+    const notes = loadNotes();
+    
+    const newNote = {
+        text: noteText,
+        date: new Date().toISOString(),
+        id: Date.now()
+    };
+    
+    notes.push(newNote);
+    saveNotes(notes);
+    displayNotes();
+    
+    console.log('Note added:', newNote);
+}
+
+// Delete a note
+function deleteNote(index) {
+    const notes = loadNotes();
+    
+    if (confirm('Delete this note?')) {
+        notes.splice(index, 1);
+        saveNotes(notes);
+        displayNotes();
+        console.log('Note deleted');
+    }
+}
+
+// Set up note form submission
+function setupNoteForm() {
+    const noteForm = document.getElementById('note-form');
+    const noteInput = document.getElementById('note-input');
+    
+    noteForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const noteText = noteInput.value.trim();
+        
+        if (noteText) {
+            addNote(noteText);
+            noteInput.value = '';
+            noteInput.focus();
+        }
+    });
+}
+
+// Initialize notes when page loads
+displayNotes();
+setupNoteForm();
