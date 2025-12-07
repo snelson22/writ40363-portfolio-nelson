@@ -1,0 +1,430 @@
+/* =========================================================
+   IMPORT FONTS
+   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* =========================================================
+   ROOT + GLOBAL
+   ========================================================= */
+:root {
+  --bg: #F5F2F7;
+  --surface: #EFEAEF;
+  --card-background: #FDFBFF;
+  --accent: #5A457D;
+  --accent-2: #4B675A;
+  --text: #2F243A;
+  --muted: #8E8E8E;
+  --border: #7C6999;
+  --link-hover: #E4C385;
+  --heading-color: #A07A4A;
+  --light-background: #EFEAEF;
+  --card-shadow: 0 4px 12px rgba(62,74,86,0.08);
+  --card-shadow-hover: 0 8px 24px rgba(62,74,86,0.15);
+  --transition-speed: 0.3s;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* =========================================================
+   CUSTOM SCROLLBARS
+   ========================================================= */
+body,
+.boards-container,
+.sprint-history,
+.progress-history {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(90,69,125,0.4) transparent;
+}
+
+body::-webkit-scrollbar,
+.boards-container::-webkit-scrollbar,
+.sprint-history::-webkit-scrollbar,
+.progress-history::-webkit-scrollbar {
+  height: 6px;
+  width: 8px;
+}
+
+body::-webkit-scrollbar-thumb,
+.boards-container::-webkit-scrollbar-thumb,
+.sprint-history::-webkit-scrollbar-thumb,
+.progress-history::-webkit-scrollbar-thumb {
+  background: rgba(90,69,125,0.45);
+  border-radius: 999px;
+}
+
+body::-webkit-scrollbar-thumb:hover,
+.boards-container::-webkit-scrollbar-thumb:hover,
+.sprint-history::-webkit-scrollbar-thumb:hover,
+.progress-history::-webkit-scrollbar-thumb:hover {
+  background: rgba(90,69,125,0.7);
+}
+
+/* =========================================================
+   MAIN APP LAYOUT
+   ========================================================= */
+.app-main {
+  padding: 1.5rem;
+}
+
+/* =========================================================
+   ⭐ MODERN NAVIGATION BAR (Option A)
+   ========================================================= */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1.25rem 2rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+
+  box-shadow: 0 2px 6px rgba(62, 74, 86, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(6px);
+}
+
+.header-left h1 {
+  margin: 0;
+  font-size: 1.35rem;
+  color: var(--heading-color);
+  letter-spacing: 0.3px;
+  font-weight: 600;
+}
+
+.main-nav {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  padding-right: 0.5rem;
+}
+
+.nav-btn {
+  padding: 0.55rem 1rem;
+  background: transparent;
+  color: var(--text);
+  border-radius: 12px;
+  border: 1px solid transparent;
+
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+
+  transition:
+    background var(--transition-speed),
+    color var(--transition-speed),
+    border-color var(--transition-speed),
+    box-shadow var(--transition-speed),
+    transform var(--transition-speed);
+}
+
+.nav-btn:hover {
+  background: rgba(90,69,125,0.08);
+  color: var(--accent);
+  border-color: rgba(90,69,125,0.15);
+  box-shadow: 0 2px 6px rgba(62,74,86,0.08);
+  transform: translateY(-1px);
+}
+
+.nav-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(90,69,125,0.25);
+  transform: translateY(-1px);
+}
+
+.nav-btn:hover::after,
+.nav-btn.active::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 50%;
+  margin: 4px auto 0;
+  background: var(--link-hover);
+  border-radius: 2px;
+  transition: width .25s ease;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.btn {
+  background: var(--accent);
+  color: white;
+  padding: .5rem .75rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition:
+    background var(--transition-speed),
+    box-shadow var(--transition-speed),
+    transform var(--transition-speed);
+}
+
+.btn:hover {
+  background: var(--link-hover);
+  box-shadow: 0 4px 10px rgba(90,69,125,0.2);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(90,69,125,0.15);
+}
+
+/* =========================================================
+   BOARDS + CARDS
+   ========================================================= */
+.boards-container {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  overflow: auto;
+  padding: .5rem 0 2rem;
+}
+
+.board {
+  width: 320px;
+  padding: 1rem;
+  min-height: 200px;
+  background: var(--surface);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.board:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.board h3 {
+  margin: 0 0 .5rem 0;
+  color: var(--heading-color);
+}
+
+.list {
+  min-height: 100px;
+  padding: .75rem;
+  border-radius: 10px;
+  background: linear-gradient(180deg, var(--surface), #f7f4f7);
+}
+
+.card {
+  background: var(--card-background);
+  padding: .75rem;
+  margin-bottom: .75rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  box-shadow: var(--card-shadow);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(90,69,125,0.2);
+}
+
+.card.draggable { cursor: grab; }
+.card.dragging {
+  opacity: .75;
+  transform: rotate(-1deg) scale(1.01);
+  box-shadow: 0 10px 26px rgba(62,74,86,0.2);
+}
+
+.goal-label {
+  display: inline-block;
+  padding: .25rem .6rem;
+  margin-right: .5rem;
+  background: #f7f2fa;
+  color: var(--accent);
+  font-weight: 700;
+  border-radius: 999px;
+  border: 1px solid rgba(90,69,125,0.08);
+  font-size: .85rem;
+}
+
+/* =========================================================
+   VIEWS + COLUMN DRAG STATES
+   ========================================================= */
+.view { display: none; }
+.view.active { display: block; }
+
+.column {
+  width: 320px;
+  min-height: 300px;
+  border: 1px dashed transparent;
+  border-radius: 10px;
+  transition: background var(--transition-speed), border-color var(--transition-speed);
+}
+
+.column.drag-over {
+  background: linear-gradient(180deg, #fff, #f7f4f7);
+  border-color: var(--accent);
+}
+
+/* =========================================================
+   SPRINT PANEL
+   (kept exactly as in your final updated version)
+   ========================================================= */
+.sprint-panel {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.sprint-display {
+  padding: 1.5rem;
+  background: var(--surface);
+  border-radius: 14px;
+  border: 1px solid rgba(62,74,86,0.08);
+  box-shadow: var(--card-shadow);
+  transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+}
+
+.sprint-display:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.sprint-mode {
+  display: inline-block;
+  padding: .35rem .75rem;
+  margin-top: .75rem;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  border-radius: 999px;
+}
+
+.sprint-progress {
+  height: 14px;
+  background: #E6E0E6;
+  border-radius: 999px;
+  margin: 1rem 0;
+}
+
+.sprint-progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width 0.4s ease-in-out;
+}
+
+/* =========================================================
+   PROGRESS DASHBOARD
+   (perfected + merged)
+   ========================================================= */
+.progress-panel {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.progress-summary {
+  width: 380px;
+  padding: 1.25rem;
+  background: var(--surface);
+  border-radius: 14px;
+  border: 1px solid rgba(62,74,86,0.08);
+  box-shadow: var(--card-shadow);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.progress-summary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.progress-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width 0.4s ease-in-out;
+}
+
+/* =========================================================
+   CHARACTERS + SCENES
+   ========================================================= */
+#characters-list .card,
+#scenes-list .card {
+  padding: .75rem;
+  background: linear-gradient(180deg, #fff, #f7f4f7);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(62,74,86,0.05);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
+}
+
+#characters-list .card:hover,
+#scenes-list .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(62,74,86,0.16);
+  border-color: rgba(90,69,125,0.25);
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+.detail-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(3px);
+  z-index: 9999;
+}
+
+.detail-card {
+  width: 90%;
+  max-width: 920px;
+  padding: 1.25rem;
+  background: var(--surface);
+  border-radius: 14px;
+  box-shadow: 0 14px 50px rgba(62,74,86,0.18);
+}
+
+.detail-card h4 {
+  margin: 0 0 .5rem 0;
+  color: var(--heading-color);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 900px) {
+  .boards-container { flex-direction: column; }
+  .column { width: 100%; }
+  .sprint-panel { grid-template-columns: 1fr; }
+  .progress-panel { flex-direction: column; }
+}
+

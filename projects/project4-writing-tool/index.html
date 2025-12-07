@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Writing Project Management Tool</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-left">
+      <h1>Writing Project Management Tool</h1>
+    </div>
+    <nav class="main-nav">
+      <button class="nav-btn" data-route="projects">Projects</button>
+      <button class="nav-btn" data-route="sprints">Sprints</button>
+      <button class="nav-btn" data-route="progress">Progress</button>
+      <button class="nav-btn" data-route="characters">Characters</button>
+      <button class="nav-btn" data-route="scenes">Scenes</button>
+      
+    </nav>
+  <div class="header-actions">
+      
+  </div>
+  </header>
+
+  <main id="app" class="app-main">
+    <div id="views">
+      <section id="view-projects" class="view active">
+        <div class="projects-controls" style="margin-bottom:1rem;display:flex;gap:1rem;align-items:flex-start;flex-wrap:wrap;">
+          <form id="add-card-form" style="display:flex;gap:.5rem;align-items:center;">
+            <input id="card-title" placeholder="Project title" required style="padding:.5rem;border-radius:6px;border:1px solid #ddd" />
+            <input id="card-desc" placeholder="Short description" style="padding:.5rem;border-radius:6px;border:1px solid #ddd" />
+            <button type="submit" class="btn">Add Project</button>
+          </form>
+          <div style="margin-left:auto;display:flex;gap:.5rem;">
+            <button id="clear-board" class="btn" style="background:#777">Clear</button>
+          </div>
+        </div>
+
+        <div id="boards-container" class="boards-container">
+          <!-- Boards will be rendered here -->
+        </div>
+      </section>
+      <section id="view-sprints" class="view">
+        <h2>Writing Sprints</h2>
+  <div id="sprints-container">
+          <div class="sprint-panel">
+            <div class="sprint-display">
+              <div style="margin-bottom:.5rem">
+                <div style="display:flex;gap:.5rem">
+                  <select id="sprint-project-select" style="flex:0 0 46%;padding:.4rem;border-radius:6px;border:1px solid #ddd">
+                    <option value="">— Select project —</option>
+                  </select>
+                  <input id="sprint-title" placeholder="Session title (e.g. Chapter 3 edits)" style="flex:1;padding:.5rem;border-radius:6px;border:1px solid #ddd" />
+                </div>
+              </div>
+              <div class="time" id="sprint-time">25:00</div>
+              <div id="sprint-mode" class="sprint-mode">Work</div>
+              <div class="sprint-progress" aria-hidden="true">
+                <div class="sprint-progress-fill" id="sprint-progress-fill" style="width:0%"></div>
+              </div>
+              <div class="sprint-controls">
+                <button id="sprint-start" class="btn">Start</button>
+                <button id="sprint-pause" class="btn">Pause</button>
+                <button id="sprint-reset" class="btn">Reset</button>
+                <button id="sprint-save" class="btn" style="background:#2a8">Save Session</button>
+              </div>
+            </div>
+            <div class="sprint-settings">
+              <label>Length (min): <input id="sprint-length" type="number" value="25" min="1" style="width:4rem"/></label>
+              <label>Short break (min): <input id="short-break" type="number" value="5" min="1" style="width:4rem"/></label>
+              <label>Long break (min): <input id="long-break" type="number" value="15" min="1" style="width:4rem"/></label>
+              <label>Target words: <input id="sprint-target" type="number" value="500" min="0" style="width:6rem"/></label>
+            </div>
+          </div>
+          <div class="sprint-editor">
+            <h3>Sprint Editor</h3>
+            <textarea id="sprint-editor-input" placeholder="Write here during your sprint..." style="width:100%;height:200px;padding:1rem;border-radius:8px;border:1px solid #ddd;resize:vertical"></textarea>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.5rem">
+              <div id="sprint-wordcount">Words: 0</div>
+              <div style="font-size:.9rem;color:var(--muted)">Autosaved locally</div>
+            </div>
+          </div>
+          <div class="sprint-history">
+            <h3>History</h3>
+            <ul id="sprint-history-list"></ul>
+          </div>
+        </div>
+      </section>
+      <section id="view-progress" class="view">
+        <h2>Progress Dashboard</h2>
+        <div id="progress-container">
+          <div class="progress-panel">
+            <div class="progress-summary">
+              <h3>Today's Words</h3>
+              <div class="progress-number" id="today-words">0</div>
+              <div class="progress-bar"><div id="today-progress-fill" class="progress-fill" style="width:0%"></div></div>
+              <div style="display:flex;gap:.5rem;align-items:center;margin-top:.5rem">
+                <label>Daily goal: <input id="daily-goal" type="number" value="1000" style="width:6rem;margin-left:.25rem"/></label>
+                <button id="add-25" class="btn">+25</button>
+                <button id="add-100" class="btn">+100</button>
+                <button id="add-500" class="btn">+500</button>
+              </div>
+              <div style="display:flex;gap:.5rem;align-items:center;margin-top:.75rem">
+                <div>Total words: <strong id="total-words">0</strong></div>
+                <div style="margin-left:auto;">Until goal: <strong id="until-goal">1000</strong></div>
+              </div>
+              <div style="display:flex;gap:.5rem;align-items:center;margin-top:.5rem">
+                <input id="manual-words" type="number" placeholder="manual add" style="width:8rem;padding:.35rem;border-radius:6px;border:1px solid #ddd"/>
+                <button id="manual-add-btn" class="btn">Add</button>
+              </div>
+            </div>
+            <div class="progress-history">
+              <h3>Recent Sessions</h3>
+              <ul id="progress-history-list"></ul>
+              <h3 style="margin-top:1rem">Projects</h3>
+              <div id="projects-breakdown"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="view-characters" class="view">
+        <h2>Characters</h2>
+        <div id="characters-container">
+          <form id="add-character-form" style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-bottom:.75rem">
+            <input id="char-name" placeholder="Name" required style="padding:.5rem;border-radius:6px;border:1px solid #ddd" />
+            <input id="char-role" placeholder="Role (e.g. Protagonist)" style="padding:.5rem;border-radius:6px;border:1px solid #ddd" />
+            <select id="char-project-select" style="padding:.5rem;border-radius:6px;border:1px solid #ddd">
+              <option value="">— No project —</option>
+            </select>
+            <input id="char-notes" placeholder="Notes (arc, traits)" style="padding:.5rem;border-radius:6px;border:1px solid #ddd;flex:1;" />
+            <button type="submit" class="btn">Add Character</button>
+          </form>
+          <div id="characters-list"></div>
+        </div>
+      </section>
+      <section id="view-scenes" class="view">
+        <h2>Scenes</h2>
+        <div id="scenes-container">
+            <form id="add-scene-form" style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-bottom:.75rem">
+            <input id="scene-title" placeholder="Scene title" required style="padding:.5rem;border-radius:6px;border:1px solid #ddd" />
+            <select id="scene-pov" style="padding:.5rem;border-radius:6px;border:1px solid #ddd">
+              <option value="">— Select POV —</option>
+            </select>
+            <select id="scene-status" style="padding:.5rem;border-radius:6px;border:1px solid #ddd">
+              <option value="planned">Planned</option>
+              <option value="drafted">Drafted</option>
+              <option value="revised">Revised</option>
+            </select>
+            <input id="scene-summary" placeholder="Short summary" style="padding:.5rem;border-radius:6px;border:1px solid #ddd;flex:1;" />
+            <button type="submit" class="btn">Add Scene</button>
+          </form>
+          <div id="scenes-list"></div>
+        </div>
+      </section>
+      
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
