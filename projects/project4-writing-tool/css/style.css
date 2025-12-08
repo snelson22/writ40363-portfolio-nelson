@@ -18,9 +18,11 @@
   --link-hover: #E4C385;
   --heading-color: #A07A4A;
   --light-background: #EFEAEF;
-  --card-shadow: 0 2px 6px rgba(0,0,0,0.06);
-  --card-shadow-hover: 0 6px 18px rgba(0,0,0,0.12);
+  --card-shadow: 0 4px 12px rgba(62,74,86,0.08);
+  --card-shadow-hover: 0 12px 32px rgba(90,69,125,0.15);
   --transition-speed: 0.3s;
+  --gradient-primary: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  --gradient-warm: linear-gradient(135deg, var(--heading-color) 0%, var(--link-hover) 100%);
 }
 
 * {
@@ -134,6 +136,7 @@ h1, h2, h3, h4, h5, h6 {
     border-color var(--transition-speed) ease,
     box-shadow var(--transition-speed) ease,
     transform var(--transition-speed) ease;
+  position: relative;
 }
 
 .nav-btn:hover {
@@ -145,7 +148,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-btn.active {
-  background: var(--accent);
+  background: var(--gradient-primary);
   color: #fff;
   border-color: var(--accent);
   font-weight: 600;
@@ -198,6 +201,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn:hover {
+  background: linear-gradient(135deg, var(--accent) 0%, #6b5993 100%);
+  box-shadow: 0 4px 12px rgba(90,69,125,0.3);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(90,69,125,0.2);
+}
+
+.btn:focus {
+  outline: 2px solid rgba(90,69,125,0.4);
+  outline-offset: 2px;
+}
+
+.btn-disabled {
   background: var(--link-hover);
   box-shadow: 0 4px 10px rgba(90,69,125,0.2);
   transform: translateY(-1px);
@@ -263,8 +282,10 @@ textarea:focus {
 }
 
 .board:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
   box-shadow: var(--card-shadow-hover);
+  border-color: rgba(124,105,153,0.25);
+  background: linear-gradient(180deg, var(--card-background), #fefdfb);
 }
 
 .board h3 {
@@ -541,21 +562,40 @@ textarea:focus {
 .detail-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0,0,0,0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .detail-card {
   width: 90%;
   max-width: 920px;
-  background: var(--surface);
+  background: var(--card-background);
+  border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 1.25rem;
-  box-shadow: 0 14px 45px rgba(0,0,0,0.25);
+  padding: 1.5rem;
+  box-shadow: 0 20px 60px rgba(62,74,86,0.2);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* =========================================================
