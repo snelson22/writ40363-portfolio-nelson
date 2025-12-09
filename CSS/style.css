@@ -738,6 +738,59 @@ header p {
 }
 
 /* ========================= */
+/* Web Development Section   */
+/* ========================= */
+.web-dev-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, rgba(160, 122, 74, 0.08), rgba(228, 195, 133, 0.08));
+  position: relative;
+}
+
+.web-dev-content {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px) saturate(1.1);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 8px 32px rgba(47, 36, 58, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.web-dev-content h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  color: var(--heading-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.web-dev-content p {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--primary-color);
+  margin-bottom: 1.25rem;
+}
+
+.web-dev-content p:last-of-type {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .web-dev-content {
+    padding: 2rem 1.5rem;
+  }
+  
+  .web-dev-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .web-dev-content p {
+    font-size: 1rem;
+  }
+}
+
+/* ========================= */
 /* 7. Skills Section         */
 /* ========================= */
 .skills-section {
