@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorites - Sophia Nelson</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+
+</head>
+<body>
+   <nav>
+    <div class="nav-container">
+        <a href="index.html" class="logo">SN</a>
+        <div class="nav-links">
+            <div class="nav-dropdown">
+                <a href="index.html#about">About</a>
+                <div class="dropdown-menu">
+                    <a href="favorites.html">My Favorites</a>
+                    <a href="favorites.html#currently-reading">Currently Reading</a>
+                </div>
+            </div>
+            <a href="index.html#skills">Skills</a>
+            <div class="nav-dropdown">
+                <a href="projects.html">Projects</a>
+                <div class="dropdown-menu">
+                    <a href="projects.html">My Work</a>
+                    <a href="projects/project2-tracker/index.html" target="_blank">Reading Log</a>
+                    <a href="projects/project3-dashboard/index.html" target="_blank">Data Dashboard</a>
+                    <a href="projects/project4-writing-tool/index.html" target="_blank">Writing Tool</a>
+                </div>
+            </div>
+            <a href="resume.html">Resume</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </div>
+    </nav>
+   
+   <main>
+
+<!-- Favorite Quotes Section -->
+<section class="favorites-quotes-section" id="quotes">
+    <h2>Favorite Quotes</h2>
+    <div class="quote-container">
+        <div class="quote-display">
+            <p class="quote-text" id="quoteText">Loading...</p>
+            <p class="quote-author" id="quoteAuthor"></p>
+        </div>
+        <button class="new-quote-btn" id="newQuoteBtn">New Quote</button>
+    </div>
+</section>
+
+<!-- Favorite Books Section -->
+<section class="favorites-books-section" id="books">
+    <h2>Favorite Books</h2>
+    <div class="book-carousel">
+        <button class="carousel-btn prev-btn" id="prevBtn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <div class="book-display">
+            <img src="images/book1.jpg" alt="Book Cover" id="bookImage" class="book-cover">
+            <p class="book-title" id="bookTitle">Book Title</p>
+        </div>
+        <button class="carousel-btn next-btn" id="nextBtn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+    </div>
+</section>
+
+<!-- Currently Reading Section -->
+<section class="currently-reading-section" id="currently-reading">
+    <h2>Currently Reading</h2>
+    <div class="current-book-container">
+        <div class="current-book-image">
+            <img src="images/current-book.jpg" alt="Currently Reading Book Cover">
+        </div>
+        <div class="current-book-details">
+            <h3>Mistborn</h3>
+            <p class="current-book-author">by Brandon Sanderson</p>
+            <p class="current-book-summary">
+                Recommended to me by a colleague, I have been quickly obsessed with this book and seriously can't put it down. The plot revolves around a rebellion to overthrow the lord ruler; this rebellion is built around a heist led by Kelsier, his team, and his newly found apprentice—Vin.
+            </p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!--leaving unlinked for now as it is public-->
+<footer id="contact">
+    <span class="footer-label">Contact</span>
+    <p>
+        <a href="https://www.linkedin.com/in/sophia-nelson-853819240" target="_blank">LinkedIn</a>
+        <a href="mailto:s.nelson22@tcu.edu">Email</a>
+    </p>
+</footer>
+
+<script src="js/favorites.js"></script>
+</body>
+</html>
