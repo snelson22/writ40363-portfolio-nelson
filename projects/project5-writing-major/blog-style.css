@@ -1,0 +1,175 @@
+/* ========================= */
+/* Blog Post Specific Styles */
+/* ========================= */
+
+.blog-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px) saturate(1.1);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(47, 36, 58, 0.15);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.blog-header {
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-accent) 100%);
+    color: white;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.blog-header::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.blog-header h1 {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.meta {
+    font-size: 1em;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    color: white;
+}
+
+.meta span {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+article {
+    padding: 3rem 2.5rem;
+}
+
+article section {
+    margin-bottom: 3rem;
+}
+
+article h2 {
+    font-size: 1.8em;
+    margin-bottom: 1.5rem;
+    color: var(--heading-color);
+    font-weight: 600;
+}
+
+article p {
+    margin-bottom: 1.25rem;
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+.summary {
+    background: linear-gradient(135deg, rgba(160, 122, 74, 0.08), rgba(228, 195, 133, 0.08));
+    padding: 2rem;
+    border-radius: 15px;
+    border-left: 5px solid var(--link-hover);
+    margin: 2rem 0;
+    box-shadow: 0 4px 12px rgba(47, 36, 58, 0.08);
+}
+
+.summary h2 {
+    color: var(--accent-color);
+}
+
+.highlight-box {
+    background: rgba(228, 195, 133, 0.15);
+    border-left: 5px solid var(--link-hover);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+}
+
+.highlight-box strong {
+    color: var(--heading-color);
+    font-weight: 600;
+}
+
+.download-link {
+    text-align: center;
+    margin: 3rem 0 2rem 0;
+}
+
+.download-link a {
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-accent));
+    color: white;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1em;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(90, 69, 125, 0.3);
+}
+
+.download-link a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(90, 69, 125, 0.4);
+    background: linear-gradient(135deg, var(--secondary-accent), var(--accent-color));
+}
+
+.blog-footer {
+    background: var(--light-background);
+    padding: 2rem 2.5rem;
+    text-align: center;
+    border-top: 1px solid rgba(124, 105, 153, 0.15);
+}
+
+.blog-footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.blog-footer a:hover {
+    color: var(--link-hover);
+}
+
+/* ========================= */
+/* Responsive Design         */
+/* ========================= */
+
+@media (max-width: 768px) {
+    .blog-container {
+        margin: 1rem;
+    }
+    
+    .blog-header {
+        padding: 2rem 1.5rem;
+    }
+    
+    article {
+        padding: 2rem 1.5rem;
+    }
+    
+    .blog-footer {
+        padding: 1.5rem;
+    }
+}
