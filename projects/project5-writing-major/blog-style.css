@@ -413,28 +413,47 @@ article ul li::before {
     }
 }
 
-/* Fix navigation header positioning and appearance */
+/* ========================= */
+/* Navigation Override Fix   */
+/* ========================= */
+
+/* Reset blog container to not interfere with nav */
+body {
+    background: var(--background-color);
+}
+
 nav {
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 1000;
     background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.nav-container {
-    background: white;
-}
-
-/* Ensure blog header doesn't interfere with nav */
+/* Ensure blog container doesn't overlap nav */
 .blog-container {
+    margin-top: 2rem;
+}
+
+/* Prevent blog header from affecting navigation */
+.blog-header {
     margin-top: 0;
 }
 
-/* Add spacing between nav and blog content */
-body {
-    padding-top: 0;
+/* Ensure nav links maintain proper styling */
+nav .nav-container {
+    background: transparent;
 }
 
-/* Ensure nav dropdown works properly */
-.nav-dropdown .dropdown-menu {
-    z-index: 1001;
+nav a {
+    color: var(--text-color) !important;
+}
+
+nav .logo {
+    color: var(--accent-color) !important;
+}
+
+/* Ensure dropdowns work properly */
+.nav-dropdown:hover .dropdown-menu {
+    display: block;
 }
