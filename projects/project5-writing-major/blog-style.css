@@ -11,6 +11,7 @@
     box-shadow: 0 8px 32px rgba(47, 36, 58, 0.15);
     overflow: hidden;
     border: 2px solid rgba(160, 122, 74, 0.2);
+    margin-top: 0;
 }
 
 .blog-header {
@@ -410,4 +411,30 @@ article ul li::before {
     .skill-name {
         font-size: 0.875rem;
     }
+}
+
+/* Fix navigation header positioning and appearance */
+nav {
+    position: relative;
+    z-index: 1000;
+    background: white;
+}
+
+.nav-container {
+    background: white;
+}
+
+/* Ensure blog header doesn't interfere with nav */
+.blog-container {
+    margin-top: 0;
+}
+
+/* Add spacing between nav and blog content */
+body {
+    padding-top: 0;
+}
+
+/* Ensure nav dropdown works properly */
+.nav-dropdown .dropdown-menu {
+    z-index: 1001;
 }
