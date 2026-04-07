@@ -1,23 +1,28 @@
 /* ========================= */
 /* 1. Reset & Global Styles  */
 /* ========================= */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-  --primary-color: #2F243A; /* Deep plum for primary text */
-  --heading-color: #A07A4A; /* Warm gold for headings */
-  --text-color: #2F243A; /* Deep plum for body text */
-  --light-text: #8E8E8E; /* Medium gray for subtle text */
-  --background: #F5F2F7; /* Soft, light taupe for main background */
-  --light-background: #EFEAEF; /* Slightly darker shade for sections */
-  --card-background: #F5F2F7; /* Same as background for cohesion */
+  --primary-color: #2F243A;
+  --heading-color: #A07A4A;
+  --text-color: #2F243A;
+  --light-text: #8E8E8E;
+  --background: #F5F2F7;
+  --light-background: #EFEAEF;
+  --card-background: #F5F2F7;
   --card-border: #7C6999;
   --card-shadow: 0 2px 4px rgba(62, 74, 86, 0.1);
   --card-shadow-hover: 0 4px 8px rgba(62, 74, 86, 0.15);
-  --accent-color: #5A457D; /* Professional purple accent from the flowers */
-  --link-hover: #E4C385; /* Brighter gold for a vibrant hover effect */
-  --secondary-accent: #4B675A; /* Muted evergreen for contrast */
+  --accent-color: #5A457D;
+  --link-hover: #E4C385;
+  --secondary-accent: #4B675A;
+  
+  /* Font variables for easier management */
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "Cormorant Garamond", Georgia, serif;
 }
+
 html {
   scroll-behavior: smooth;
 }
@@ -29,7 +34,7 @@ html {
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-body);
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--background);
@@ -39,7 +44,7 @@ body {
 /* 2. Typography             */
 /* ========================= */
 h1, h2, h3 {
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-heading);
   line-height: 1.2;
   color: var(--heading-color);
 }
@@ -63,7 +68,7 @@ p {
   font-size: 1rem;
   margin-bottom: 1rem;
   color: var(--text-color);
-  font-family: "Inter", sans-serif;
+  font-family: "Cormorant Garamond", serif;
 }
 /* Consistent spacing between paragraphs */
 p + p {
